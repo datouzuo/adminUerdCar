@@ -45,4 +45,10 @@ public class AdminSellServiceImp implements AdminSellApplyService{
 		return UsedCarResult.ok();
 	}
 
+	@Override
+	public UsedCarResult collectCar(String carId, Integer usrId) {
+		
+		return null;
+	}
+
 }
