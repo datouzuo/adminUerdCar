@@ -22,7 +22,8 @@ public class UsedCarResult implements Serializable{
     }
 
     public static UsedCarResult ok() {
-        return new UsedCarResult(null);
+       
+    	return new UsedCarResult(null);
     }
 
     public UsedCarResult() {
