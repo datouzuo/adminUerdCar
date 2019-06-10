@@ -34,8 +34,13 @@ public class OrderServiceImp implements OrderService{
 
 	@Override
 	public UsedCarResult findByStatus(Integer status) {
+		List<Order> orders;
+		if(status == 4) {
+			orders = oDao.findAll();
+		}else {
+		 orders = oDao.findByStatus(status); 
+		}
 		
-		List<Order> orders = oDao.findByStatus(status);
 		for(Order order : orders) {
 			OrderToUser otu = new OrderToUser();
 			otu.setOrder(order);

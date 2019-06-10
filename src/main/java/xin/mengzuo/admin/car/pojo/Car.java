@@ -16,9 +16,9 @@ public class Car {
 	private Double displacement;// 排量
 	private Double mileage;// 里程数		
 	private Double oldPrice;// 二手价
-	private Integer status;// 
-	private Integer userId;//
-	private String createdAt;// 
+	private Integer status;// 状态0未处理1已处理3已取消
+	private Integer userId;// 用户Id
+	private String createdAt;// 创建时间
 	private String faceImage;//车的正面照片
 	private String otherImage;// 车俩其他图片
 	private String phone;// 联系电话
