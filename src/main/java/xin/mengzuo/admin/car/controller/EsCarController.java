@@ -13,14 +13,14 @@ import xin.mengzuo.admin.car.config.UsedCarResult;
 import xin.mengzuo.admin.car.pojo.EsCar;
 import xin.mengzuo.admin.car.pojo.EsMoreCar;
 import xin.mengzuo.admin.car.pojo.EsUser;
-import xin.mengzuo.admin.car.service.AddCarService;
+import xin.mengzuo.admin.car.service.EsCarService;
 
 
 @RestController
 @RequestMapping("/add")
-public class AddCarController {
+public class EsCarController {
 	@Autowired
-	private AddCarService addcar;
+	private EsCarService addcar;
      @RequestMapping("/addUser")
 	public UsedCarResult addUser(EsUser esUser) throws IOException {
 	
@@ -43,14 +43,16 @@ public class AddCarController {
 
 
 @RequestMapping("/findCarByIdCard")
-public UsedCarResult findCarByIdCar(String idCard) {
+public UsedCarResult findCarByIdCar(String idCard) throws IOException {
 	
-	return null;
+	
+	return addcar.findCarByIdCard(idCard);
 }
 @RequestMapping("/saleCarByCarId")
-public UsedCarResult saleCarByCarId(String idCard) {
+public UsedCarResult saleCarByCarId(String carId,Integer status) throws IOException {
 	
-	return null;
+	
+	return addcar.saleCarByCarId(carId, status);
 }
 
 

@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import xin.mengzuo.admin.car.pojo.Order;
+import xin.mengzuo.admin.car.pojo.Userorder;
 
 
-public interface OrderDao extends JpaRepository<Order, Integer>{
- List<Order> findByUserId(Integer userId);
- List<Order> findByStatus(Integer status);
+public interface OrderDao extends JpaRepository<Userorder, Integer>{
+ List<Userorder> findByUserId(Integer userId);
+ List<Userorder> findByStatus(Integer status);
 }

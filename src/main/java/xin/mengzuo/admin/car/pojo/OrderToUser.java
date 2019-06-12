@@ -2,7 +2,7 @@ package xin.mengzuo.admin.car.pojo;
 
 public class OrderToUser {
 
-	private Order order;
+	private Userorder order;
 	private EsUser esu;
 
 	public EsUser getEsu() {
@@ -13,11 +13,11 @@ public class OrderToUser {
 		this.esu = esu;
 	}
 
-	public Order getOrder() {
+	public Userorder getOrder() {
 		return order;
 	}
 
-	public void setOrder(Order order) {
+	public void setOrder(Userorder order) {
 		this.order = order;
 	}
 	

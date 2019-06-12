@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 @Entity
-public class Order {
+public class Userorder {
 	@Id
  	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
@@ -14,14 +14,15 @@ public class Order {
 	private Integer userId;
 	private Integer status;
 	private String phone;
-	private String name;
+	private String userName;
 	
 	
-	public String getName() {
-		return name;
+	
+	public String getUserName() {
+		return userName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getPhone() {
 		return phone;

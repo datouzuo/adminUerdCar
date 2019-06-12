@@ -20,10 +20,10 @@ import xin.mengzuo.admin.car.pojo.EsCar;
 import xin.mengzuo.admin.car.pojo.EsMoreCar;
 import xin.mengzuo.admin.car.pojo.EsUser;
 import xin.mengzuo.admin.car.pojo.EsUserToEsCar;
-import xin.mengzuo.admin.car.service.AddCarService;
+import xin.mengzuo.admin.car.service.EsCarService;
 
 @Service
-public class AddServiceImp implements AddCarService {
+public class EsServiceImp implements EsCarService {
     @Autowired
 	private JestClient jest;
 	@Override
@@ -61,7 +61,9 @@ public class AddServiceImp implements AddCarService {
 		SearchSourceBuilder search = new SearchSourceBuilder();
 		 BoolQueryBuilder queryBuilder = QueryBuilders.boolQuery();
 		 queryBuilder.must(QueryBuilders.matchQuery("idCard", idCard));
+		 search.query(queryBuilder);
 		 Search se = new Search.Builder(search.toString()).addIndex("car").addType("esuser").build();
+		
 		 SearchResult execute = jest.execute(se);
 		 Hit<EsUser,Void> firstHit = execute.getFirstHit(EsUser.class);
 		 EsUser source = firstHit.source;
@@ -69,8 +71,8 @@ public class AddServiceImp implements AddCarService {
 		 SearchSourceBuilder search1 = new SearchSourceBuilder();
 		 BoolQueryBuilder queryBuilder1 = QueryBuilders.boolQuery();
 		 queryBuilder1.must(QueryBuilders.matchQuery("carId", source.getCarId()));
-		
-		 Search se1 = new Search.Builder(search1.toString()).addIndex("car").addType("escar").build();
+		search1.query(queryBuilder1);
+		 Search se1 = new Search.Builder(search1.toString()).addIndex("escar").addType("escar").build();
 		 SearchResult execute1 = jest.execute(se1);
 		 Hit<EsCar, Void> firstHit1 = execute1.getFirstHit(EsCar.class);
 		 EsCar source2 = firstHit1.source;
@@ -82,10 +84,25 @@ public class AddServiceImp implements AddCarService {
 	}
 
 	@Override
-	public UsedCarResult saleCarByCarId(String idCard) throws IOException {
+	public UsedCarResult saleCarByCarId(String idCard,Integer status) throws IOException {
 		
-		
-		return null;
+		SearchSourceBuilder search = new SearchSourceBuilder();
+		 BoolQueryBuilder queryBuilder = QueryBuilders.boolQuery();
+		 queryBuilder.must(QueryBuilders.matchQuery("carId", idCard));
+		 search.query(queryBuilder);
+		 Search se = new Search.Builder(search.toString()).addIndex("escar").addType("escar").build();
+		 try {
+			SearchResult execute = jest.execute(se);
+			Hit<EsCar,Void> firstHit = execute.getFirstHit(EsCar.class);
+			EsCar score = firstHit.source;
+			score.setStatus(status);;
+			Index in = new Index.Builder(score).index("escar").type("escar").build();
+			jest.execute(in);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return UsedCarResult.ok();
 	}
      
 	

@@ -10,7 +10,7 @@ import xin.mengzuo.admin.car.pojo.EsMoreCar;
 import xin.mengzuo.admin.car.pojo.EsUser;
 
 
-public interface AddCarService {
+public interface EsCarService {
 	
 	public UsedCarResult addUser(EsUser esUser)throws IOException;
 	public UsedCarResult findCarByIdCard(String idCard)throws IOException;
@@ -19,6 +19,6 @@ public interface AddCarService {
 
 	public UsedCarResult addMoreCar(EsMoreCar esMoreCar)throws IOException;
     
-	public UsedCarResult saleCarByCarId(String idCard) throws IOException;
+	public UsedCarResult saleCarByCarId(String idCard,Integer status) throws IOException;
 	
 }
