@@ -10,6 +10,8 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import redis.clients.jedis.JedisCluster;
+import xin.mengzuo.admin.car.pojo.User;
+
 
 
 
@@ -29,11 +31,14 @@ public class SessionInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		String value = CookieUtils.getCookieValue(request, "tokenId");
+		String tokenId = request.getParameter("tokenId");
+		String value = cluster.get("tokenId:"+tokenId);
 		if(value!=null&&value.equals("")) {
+			User usr = obJeson.readValue(value, User.class);
+			if(usr.getUsername().equals("admin")) {
 			cluster.expire("tokenId:"+value, 1800);
 			return true;
-			
+			}
 		}
 		return false;
 	}

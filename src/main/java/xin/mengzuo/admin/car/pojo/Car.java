@@ -23,16 +23,16 @@ public class Car {
 	private String otherImage;// 车俩其他图片
 	private String phone;// 联系电话
 	private String area;// 地址
-	private Date cardTime; // 上牌时间
+	private String cardTime; // 上牌时间
 	
 	
-	public Date getCardTime() {
+	
+	public String getCardTime() {
 		return cardTime;
 	}
-	public void setCardTime(Date cardTime) {
+	public void setCardTime(String cardTime) {
 		this.cardTime = cardTime;
 	}
-
 	public String getCreatedAt() {
 		return createdAt;
 	}
