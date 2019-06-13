@@ -20,5 +20,6 @@ public interface EsCarService {
 	public UsedCarResult addMoreCar(EsMoreCar esMoreCar)throws IOException;
     
 	public UsedCarResult saleCarByCarId(String idCard,Integer status) throws IOException;
-	
+	public UsedCarResult count(Integer status) throws IOException;
+
 }

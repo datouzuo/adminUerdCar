@@ -8,4 +8,5 @@ public interface AdminSellApplyService {
 	UsedCarResult findByStatus(Integer status);
     UsedCarResult updataApply(Integer id);
     UsedCarResult collectCar(String carId,Integer usrId);
+    UsedCarResult count();
 }

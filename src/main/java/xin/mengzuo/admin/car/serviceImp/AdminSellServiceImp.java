@@ -1,5 +1,6 @@
 package xin.mengzuo.admin.car.serviceImp;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,6 +12,7 @@ import xin.mengzuo.admin.car.config.ApplStuts;
 import xin.mengzuo.admin.car.config.UsedCarResult;
 import xin.mengzuo.admin.car.dao.SellCarDao;
 import xin.mengzuo.admin.car.pojo.Car;
+import xin.mengzuo.admin.car.pojo.CarCount;
 import xin.mengzuo.admin.car.service.AdminSellApplyService;
 @Service
 @Transactional
@@ -50,5 +52,22 @@ public class AdminSellServiceImp implements AdminSellApplyService{
 		
 		return null;
 	}
+
+	@Override
+	public UsedCarResult count() {
+		List carCount = scd.carCount();
+		List<CarCount> list = new LinkedList<CarCount>();
+		 for(Object row: carCount)
+		 { 
+			 Object[] cells = (Object[]) row;
+			 CarCount car = new CarCount();
+			 car.setCount(Integer.parseInt(cells[1].toString()));
+			 car.setStatus(cells[0].toString());
+			 list.add(car);
+		 }
+		return UsedCarResult.ok(list);
+	}
+	
+	
 
 }

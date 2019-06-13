@@ -30,5 +30,10 @@ public class AdminSellApplyController {
 	public UsedCarResult updataAplly(Integer id){
 		return asell.updataApply(id);
 	}
+	@RequestMapping("/count")
+	public UsedCarResult count(Integer count) {
+		return asell.count();
+	}
+
 
 }

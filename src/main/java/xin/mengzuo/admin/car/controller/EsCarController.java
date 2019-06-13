@@ -56,5 +56,4 @@ public UsedCarResult saleCarByCarId(String carId,Integer status) throws IOExcept
 }
 
 
-
 }

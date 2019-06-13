@@ -104,6 +104,12 @@ public class EsServiceImp implements EsCarService {
 		}
 		return UsedCarResult.ok();
 	}
+
+	@Override
+	public UsedCarResult count(Integer status) throws IOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
      
 	
 
